@@ -4,12 +4,10 @@ import pickle
 import numpy as np
 
 import nltk  # natural language toolkit
-nltk.download('punkt')  # resolves "Resource punkt not found."
-nltk.download('wordnet')  # resolves "Resource wordnet not found."
+# nltk.download('punkt')  # resolves "Resource punkt not found."
+# nltk.download('wordnet')  # resolves "Resource wordnet not found."
 from nltk.stem import WordNetLemmatizer  # optimization | groups same words
-
-from tensorflow import keras
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 
 
 lemmatizer = WordNetLemmatizer()

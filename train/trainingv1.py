@@ -56,13 +56,13 @@ for document in documents:
     wordPatterns = [lem.lemmatize(word.lower()) for word in wordPatterns]  # lemmatize each word in wordPatters, which consist of the index 0 (words) in each document element
     
     # inputs 1 or 0 into the bag of words depending whether it occurs in the pattern or not, respectively
-    # for word in words:
-    #   bag.append(1) if word in wordPatterns else bag.append(0)
     for word in words:
-        if word in wordPatterns:
-            bag.append(1)
-        else:
-            bag.append(0)
+      bag.append(1) if word in wordPatterns else bag.append(0)
+    # for word in words:
+    #     if word in wordPatterns:
+    #         bag.append(1)
+    #     else:
+    #         bag.append(0)
     
     outputRow = list(outputEmpty)
     outputRow[classes.index(document[1])] = 1
@@ -87,9 +87,10 @@ model = Sequential([
     Dropout(0.5),
     
     # output layer
-    # activation function = softmax | returns a probability that a certain input belongs to a specific class (tag)
+    # activation function = softmax | returns the probability that a certain input belongs to a specific class (tag)
     Dense(len(trainY[0]), activation='softmax')  
 ])
+
 
 # optimizer | compile
 # the first statement initializes an SGD optimizer with specific parameters, and the second statement compiles the model using that optimizer, along with specifying the loss function and evaluation metric.
@@ -109,6 +110,6 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 # verbose -> display info during each epoch | 0 = silent, 1 = progress bar, 2 = one line per epoch
 # model.save -> passes the return value of 'history' to be saved as an h5 file
 print("Building model...")
-history = model.fit(trainX, trainY, epochs=250, batch_size=5, verbose=1)
+history = model.fit(trainX, trainY, epochs=200, batch_size=5, verbose=1)
 model.save('./model/chatbotModel.h5', history) 
 print('Model created.')
