@@ -9,8 +9,8 @@ import tensorflow as tf
     # from tensorflow.keras.optimizers import SGD
 
 import nltk  # natural language toolkit
-nltk.download('punkt')  # resolves "Resource punkt not found."
-nltk.download('wordnet')  # resolves "Resource wordnet not found."
+# nltk.download('punkt')  # resolves "Resource punkt not found."
+# nltk.download('wordnet')  # resolves "Resource wordnet not found."
 from nltk.stem import WordNetLemmatizer  # optimization | groups same words or reduces similar words to its stem
 
 
@@ -18,6 +18,9 @@ lemmatizer = WordNetLemmatizer()
 
 # loads intents library
 intents = json.loads(open('./intents/intents.json').read())
+# intentsAdmission = json.load(open('./intents/admissionIntents.json').read())
+# intentsRegistrar = json.load(open('./intents/registrarIntents.json').read())
+# intentsCashier = json.load(open('./intents/cashierIntents.json').read())
 
 words = []  # list for each tokenized words (words are separated from each other in a statement/phrase)
 classes = []  # list of tags
@@ -58,7 +61,9 @@ for document in documents:
     outputRow = list(outputEmpty)
     outputRow[classes.index(document[1])] = 1
     training.append(bag + outputRow)
-    
+
+
+
 random.shuffle(training)
 training = np.array(training)  # converts to numpy array
 
@@ -66,11 +71,17 @@ training = np.array(training)  # converts to numpy array
 trainX = training[:, :len(words)]
 trainY = training[:, len(words):]
 
+# trainX = list(training[:,0])
+# trainY = list(training[:,1])
+
+# trainX = np.array([item[0] for item in training])
+# trainY = np.array([item[1] for item in training])
+
 # building the neural network model (I don't understand shit)
-model = tf.keras.Sequential()
-model.add(tf.keras.layers.Dense(128, input_shape=(len(trainX[0]),), activation='relu'))
-model.add(tf.keras.layers.Dropout(0.5))
-model.add(tf.keras.layers.Dense(64, activation='relu'))
+model = tf.keras.Sequential()  # creates a model that is layer by layer
+model.add(tf.keras.layers.Dense(128, input_shape=(len(trainX[0]),), activation='relu'))  # input layer with 128 neurons, 
+model.add(tf.keras.layers.Dropout(0.5))  # prevents model from overfitting | randomly ignores/drops neurons temporarily each iteration | 0.5 = drops 50% of the input units/neurons
+model.add(tf.keras.layers.Dense(64, activation='relu'))  # adds a new layer with 64 neurons, allows for learning more properties/features from an input
 model.add(tf.keras.layers.Dropout(0.5))
 model.add(tf.keras.layers.Dense(len(trainY[0]), activation='softmax'))
     # model = Sequential()

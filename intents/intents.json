@@ -31,7 +31,7 @@
     },
 
     {
-    "tag": "Admission Department",
+    "tag": "programs",
     "patterns": ["programs", "what programs do you offer?", "courses", "what courses do you offer?", "what programs does STI have?", "do you have BSIT", "do you have BSCS?", "do you offer computer science", "information technology", "BSTM", "hospitality and management"],
     "responses": ["Thank you for your interest in our school. We are offering the following programs:  - BS in Information Technology (BSIT), - BS in Computer Science (BSCS), - BS in Computer Engineering (BSCPE)"]
     }
