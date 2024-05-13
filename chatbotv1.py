@@ -22,7 +22,7 @@ lem = WordNetLemmatizer()
 
 # <=========== functions ===========>
 
-#
+
 def cleanUpSentence(sentence):
     tokens = nltk.word_tokenize(sentence)  # tokenize sentence
     tokens = [lem.lemmatize(word) for word in tokens]  # lemmatize sentence

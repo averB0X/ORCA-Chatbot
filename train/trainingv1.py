@@ -10,6 +10,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 # nltk.download('punkt')
 # nltk.download('wordnet')
+# import tensorflow as tf
 
 
 # intents dictionary
@@ -43,7 +44,7 @@ classes = sorted(set(classes))  # removes duplicate tags
 
 # serializes each element | wb -> writing binary | outputs a pickle file (.pkl)
 pickle.dump(words, open('./pkl/words.pkl', 'wb'))
-pickle.dump(classes, open('./pkl/tags.pkl', 'wb'))
+pickle.dump(classes, open('./pkl/classes.pkl', 'wb'))
 
 # MACHINE LEARNING
 training = []
@@ -91,6 +92,12 @@ model = Sequential([
     Dense(len(trainY[0]), activation='softmax')  
 ])
 
+# model = tf.keras.Sequential()  # creates a model that is layer by layer
+# model.add(tf.keras.layers.Dense(128, input_shape=(len(trainX[0]),), activation='relu'))  # input layer with 128 neurons, 
+# model.add(tf.keras.layers.Dropout(0.5))  # prevents model from overfitting | randomly ignores/drops neurons temporarily each iteration | 0.5 = drops 50% of the input units/neurons
+# model.add(tf.keras.layers.Dense(64, activation='relu'))  # adds a new layer with 64 neurons, allows for learning more properties/features from an input
+# model.add(tf.keras.layers.Dropout(0.5))
+# model.add(tf.keras.layers.Dense(len(trainY[0]), activation='softmax'))
 
 # optimizer | compile
 # the first statement initializes an SGD optimizer with specific parameters, and the second statement compiles the model using that optimizer, along with specifying the loss function and evaluation metric.
