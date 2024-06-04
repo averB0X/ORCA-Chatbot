@@ -1,6 +1,7 @@
 #libs
 import random
 import json
+import re
 import pickle
 import numpy as np
 import nltk
@@ -16,22 +17,6 @@ from keras.models import load_model
 # intents = json.loads(open('./intents/intents.json').read())
 
 
-# dictMaster = []
-# dictOne = json.loads(open('./intents/intents.json').read())
-# dictTwo = json.loads(open('./intents/intentsTechnical.json').read())
-# dictMaster.append(dictOne)
-# dictMaster.append(dictTwo)
-# print(type(dictMaster))
-# print(dictMaster)
-
-# dictOne = json.loads(open('./intents/intents.json').read())
-# print(dictOne)
-# dictTwo = json.loads(open('./intents/intentsTechnical.json').read())
-# print(dictTwo)
-# dictMaster = {**dictOne, **dictTwo}
-# print(type(dictMaster))
-# print(dictMaster)
-
 words = pickle.load(open('pkl/words.pkl', 'rb'))
 classes = pickle.load(open('pkl/classes.pkl', 'rb'))
 model = load_model('model/chatbotModel.h5')
@@ -39,7 +24,6 @@ lem = WordNetLemmatizer()
 
 
 # <=========== functions ===========>
-
 
 def cleanUpSentence(sentence):
     tokens = nltk.word_tokenize(sentence)  # tokenize sentence
@@ -73,14 +57,30 @@ def predictClass(sentence):
         print(returnList)
     return returnList  # returns a list of intents and its probabilities
 
-def getResponse(intentsList, intents_json):
+def getResponse(intentsList):
     tag = intentsList[0]['intent']
     print(tag)
-    listOfIntents = intents_json['intents']
-    for i in listOfIntents:
-        if i['tag'] == tag:
-            result = random.choice(i['responses'])
-    return result
+    if bool(re.search('(admission)', tag)):
+        intents = json.loads(open('./intents/intents.json').read()) 
+        listOfIntents = intents['intents']
+        for i in listOfIntents:
+            if i['tag'] == tag:
+                result = random.choice(i['responses'])
+        return result
+    elif bool(re.search('(tech)', tag)):
+        intents = json.loads(open('./intents/intentsTechnical.json').read())
+        listOfIntents = intents['intents']
+        for i in listOfIntents:
+            if i['tag'] == tag:
+                result = random.choice(i['responses'])
+        return result
+    elif bool(re.search('(others)', tag)):
+        intents = json.loads(open('./intents/intentsOthers.json').read())
+        listOfIntents = intents['intents']
+        for i in listOfIntents:
+            if i['tag'] == tag:
+                result = random.choice(i['responses'])
+        return result
 
 # #chatbot loop
 # print("Test running...")
@@ -91,5 +91,5 @@ def getResponse(intentsList, intents_json):
 #         exit()
 #     else:
 #         ints = predictClass(msg)
-#         res = getResponse(ints, intents)
+#         res = getResponse(ints)
 #         print("ORCA: " + res)

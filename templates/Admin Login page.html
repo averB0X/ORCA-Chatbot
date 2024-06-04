@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ORCA: Interactive Chatbot </title>
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page admin.css') }}">
+
+</head>
+<body>
+<!-- partial:admin login.partial.html -->
+<div class="wrapper">
+
+<div class="login_wrapper">
+<img src="{{ url_for('static', filename='img/user.png') }}" class="user_image" alt="User">
+<img src="{{ url_for('static', filename='img/circle.png') }}" class="circle_image" alt="Circle">
+<img src="{{ url_for('static', filename='img/circle.png') }}" class="circle_image2" alt="Circle2">
+<img src="{{ url_for('static', filename='img/orca image.svg') }}" class="orca_image" alt="Orca">
+<img src="{{ url_for('static', filename='img/orca text.svg') }}" class="orca_image2" alt="Orca">
+<img src="{{ url_for('static', filename='img/STI.png') }}" class="background_image" alt="STI">
+
+  <div class="login_box">
+    <div class="login-header">
+      <span>Admin Login</span>
+    </div>
+    <div class="input_box">
+      <input type="text" id="user" class="input-field" required>
+      <label for="user" class="label">Username</label>
+      <i class="bx bx-user icon"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="password" id="pass" class="input-field" required>
+      <label for="pass" class="label">Password</label>
+      <i class="bx bx-lock-alt icon"></i>
+    </div>
+
+    <div class="input_box">
+      <a href="{{ url_for('dashboard_page') }}"><input type="submit" class="input-submit" value="Login"></a>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

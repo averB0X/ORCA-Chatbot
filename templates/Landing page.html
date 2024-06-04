@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">``
+    <title>ORCA: Interactive Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/orca image.svg') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing page admin.css') }}">
+</head>
+
+<body id="body">
+
+    <section id="slider" class="hero-area">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url(' {{ url_for('static', filename='img/STI.png') }}');">
+                    <div class="carousel-caption">
+                        <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">
+                            Welcome to<span> ORCA</span>!</h2>
+                        <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span></span> An
+						Interactive Chatbot</h3><span data-wow-duration="1000ms" class="wow slideInRight animated">STI College Ortigas-Cainta</span>
+						<a href="{{ url_for('chatbot_page') }}" class="primary-btn mt-4" data-text="Go to Chatbot">
+                            <span>C</span><span>O</span><span>N</span><span>V</span><span>E</span><span>R</span><span>S</span><span>A</span><span>T</span><span>I</span><span>O</span><span>N</span>
+                        </a>
+                    </div>
+                </div>
+				
+                <div class="carousel-item" style="background-image: url(' {{ url_for('static', filename='img/STI.png') }}');">
+                    <div class="carousel-caption">
+                        <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">
+                          <span>Admin</span></h2>
+                        <h3 data-wow-duration="500ms" class="wow slideInLeft animated">ORCA</span>
+						</h3> <span data-wow-duration="500ms" class="wow slideInRight animated">ORCA</span>
+							<a href="{{ url_for('admin_login_page') }}" class="primary-btn mt-4" data-text="Go to Login Page">
+                                <span>L</span><span>O</span><span>G</span><span>I</span><span>N</span> <span></span>
+                                <span>P</span><span>A</span><span>G</span><span>E</span><span></span>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <script src="{{ url_for('static', filename='js/Landing page jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Landing page jquery.singlePageNav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Landing page bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Landing page owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Landing page custom.js') }}"></script>
+</body>
+</html>

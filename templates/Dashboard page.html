@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>ORCA: Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard style.css') }}" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="{{ url_for('static', filename='img/orca image.svg') }}" alt="" />
+          </span>
+          <div class="text logo-text">
+            <span class="name">ORCA</span>
+            <span class="profession">An Interactive Chatbot</span>
+          </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="{{ url_for('dashboard_page') }}">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-link" id="userDropdown">
+              <a href="#">
+                <i class="bx bx-user icon"></i>
+                <span class="text nav-text users">Users</span>
+              </a>
+            </li>
+
+            <ul class="userdb1 dropdown-menu">
+              <li class="nav-link">
+                <a href="{{ url_for('creating_user_page') }}">
+				                <i class="bx bx-user icon"></i>
+                  <span class="text nav-text users" name="users">Create User</span>
+                </a>
+              </li>
+              <li class="nav-link">
+                <a href="#">
+				                <i class="bx bx-user icon"></i>
+                  <span class="text nav-text users" name="users">View User</span>
+                </a>
+              </li>
+            </ul>
+            
+
+            <li class="nav-link" id="contentDropdown">
+              <a href="#">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text content">Content</span>
+              </a>
+            </li>
+              <ul class="contentDropdownMenu dropdown-menu">
+                <li class="nav-link">
+                  <a href="#">
+				                  <i class="bx bx-bell icon"></i>
+                    <span class="text nav-text content" name="content">Admission</span>
+                  </a>
+                </li>
+                <li class="nav-link">
+                  <a href="#">
+				                  <i class="bx bx-bell icon"></i>
+                    <span class="text nav-text content" name="content">Registrar</span>
+                  </a>
+                </li>
+                <li class="nav-link">
+                  <a href="#">
+				                  <i class="bx bx-bell icon"></i>
+                    <span class="text nav-text content" name="content">IT Support</span>
+                  </a>
+                </li>
+                <li class="nav-link">
+                  <a href="#">
+				                  <i class="bx bx-bell icon"></i>
+                    <span class="text nav-text content" name="content">Cashier</span>
+                  </a>
+                </li>
+            <li class="nav-link">
+              <a href="#">
+			                  <i class="bx bx-bell icon"></i>
+                <span class="text nav-text users" name="users">Other</span>
+              </a>
+            </li>
+          </ul>
+
+            <li class="nav-link">
+              <a href="{{ url_for('conversation_page') }}">
+                <i class="bx bx-chat icon"></i>
+                <span class="text nav-text">Conversation</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-star icon"></i>
+                <span class="text nav-text">Feedback/Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="{{ url_for('admin_login_page') }}">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+      <img src="{{ url_for('static', filename='img/STI.png') }}" class="background_image" alt="STI" />
+      <div class="header">
+        <div class="image-text">
+            <img src="{{ url_for('static', filename='img/user.png') }}" alt="" />
+        </div>
+        <div class="user-details">
+          <div class="user-name">iMissHerBro</div>
+          <div class="user-role">Admin</div>
+        </div>
+        <div class="user-search">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search icon"></i>
+        </div>
+      </div>
+
+      
+
+    </section>
+    <!-- partial -->
+    <script src="{{ url_for('static', filename='js/Dashboard script.js') }}"></script>
+  </body>
+</html>
